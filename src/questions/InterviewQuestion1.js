@@ -15,7 +15,10 @@ export default function Question1(){
         }
     }, [users])
 
-  
+    
+    function updateName($event){
+        setName($event.target.value);
+    }
     /**
      * @function filter
      * @param name
@@ -26,7 +29,7 @@ export default function Question1(){
      * @description Should return a list of users
      */
     function filter(name, users){
-        return users
+        return name != "" ? users.filter(user => user.name.split(" ")[0].toLowerCase().startsWith(name.toLowerCase()) || user.name.split(" ")[1].toLowerCase().startsWith(name.toLowerCase())) : users;
     }
     /**
      * @function filteredUsers
@@ -54,8 +57,9 @@ export default function Question1(){
                 {
                     /**
                      * Hint. If you want to do the bonus part, use Form.Control. It's a version of the HTML Input
-                     *  <Form.Control placeholder="Search by Name" plaintext />
+                     *  
                      */
+                     <Form.Control placeholder="Search by Name" plaintext value={name} onChange={updateName} />
                 }
             </Row>
             <Row>
@@ -70,7 +74,17 @@ export default function Question1(){
                 </thead>
                 <tbody>
                     {
-                       //Display users in table rows herre
+                       //Display users in table rows here
+                       filteredUsers(name, users).map(user => {
+                        return (
+                            <tr key={user.id}>
+                                <td>{user.name.split(" ")[0]}</td>
+                                <td>{user.name.split(" ")[1]}</td>
+                                <td>{user.username}</td>
+                                <td>{user.website}</td>
+                            </tr>
+                        )
+                    })
                     }
                 </tbody>
             </Table>
