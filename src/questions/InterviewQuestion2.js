@@ -18,8 +18,8 @@ export default function Question2(){
      * 
      * @description validates that a post's title and body are not empty
      */
-    function validate(){
-        return true
+    function validate(title, body){
+        return title !== "" && body !== ""
     }
     /**
      * @function isValid
@@ -35,8 +35,10 @@ export default function Question2(){
      * @description updatePost takes the input value from an onChange event and triggers a state update on the field that is updating. This can be either the title or the body
      */
     function updatePost($event, field){
-        
-        
+        setPost(prevPost => ({
+            ...prevPost,
+            [field]: $event.target.value
+        }));
     }
     /**
      * @function addPost
@@ -45,10 +47,11 @@ export default function Question2(){
      */
     function addPost($event){
         $event.preventDefault();
-        axios.post(`https://jsonplaceholder.typicode.com/posts`, {post, userId: 1}).then(response=>{
-                
-        })
-       
+        if(isValid(post.title, post.body)){
+            axios.post(`https://jsonplaceholder.typicode.com/posts`, {post, userId: 1}).then(response=>{
+                setStatus(response.status);    
+            })
+        }
     }
     
     return (
@@ -71,12 +74,12 @@ export default function Question2(){
                     <Form.Label className="mt-3 mb-3">
                         Title
                     </Form.Label>
-                    <Form.Control type="text" />
+                    <Form.Control type="text" value={post.title} onChange={($event)=> updatePost($event, 'title')} />
                     <Form.Label className="mb-3">
                         Body
                     </Form.Label>
-                    <Form.Control as="textarea"  />
-                    <Button className="mt-3" variant="primary" type="submit" >
+                    <Form.Control as="textarea" value={post.body} onChange={($event) => updatePost($event, 'body')} />
+                    <Button className="mt-3" variant="primary" type="submit" onClick={addPost}>
                         Post
                     </Button>
                 </Form>
