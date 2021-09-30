@@ -16,4 +16,4 @@ You will also see any lint errors in the console.
 
 ## Description
 
-This is a project meant to interview new candidates for Rothco's Frontend Team. Currently only one code challenge, but will be adding new coding challenges soon
+This is a project meant to interview new candidates for Rothco's Frontend Team. Currently only two code challenges, but will be adding new coding challenges soon
