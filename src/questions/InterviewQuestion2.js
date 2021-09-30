@@ -1,7 +1,7 @@
 import axios from "axios"
 import _ from "lodash";
 import {useState} from "react"
-import {Container,Row, Col, Form, Button} from "react-bootstrap"
+import {Container,Row, Col, Form, Button, Alert} from "react-bootstrap"
 
 export default function Question2(){
     let [post, setPost] = useState({
@@ -9,7 +9,7 @@ export default function Question2(){
         body: ""
     })
 
-    let [status, setStatus] = useState()
+    let [status, setStatus] = useState(null)
     /**
      * @function validate
      * @param {string} title
