@@ -18,7 +18,7 @@ function App() {
         <Nav className="me-auto">
           <Nav.Link as={Link} to="/question-1">Interview Question 1</Nav.Link>
           <Nav.Link as={Link} to="/question-2">Interview Question 2</Nav.Link>
-          <Nav.Link as={Link} to="/question-3">Interview Question 3</Nav.Link>
+          {/* <Nav.Link as={Link} to="/question-3">Interview Question 3</Nav.Link> */}
         </Nav>
       </Navbar>
 
