@@ -15,20 +15,20 @@ function App() {
       <Router>
       <Navbar expand="lg" bg="dark" variant="dark">
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/question-1">Interview Question 1</Nav.Link>
-          <Nav.Link as={Link} to="/question-2">Interview Question 2</Nav.Link>
+          <Nav.Link as={Link} to="/interview/question-1">Interview Question 1</Nav.Link>
+          <Nav.Link as={Link} to="/interview/question-2">Interview Question 2</Nav.Link>
           {/* <Nav.Link as={Link} to="/question-3">Interview Question 3</Nav.Link> */}
         </Nav>
       </Navbar>
 
       <Switch>
-          <Route path="/question-1">
+          <Route path="/interview/question-1">
            <Questions.Q1 />
           </Route>
-          <Route path="/question-2">
+          <Route path="/interview/question-2">
             <Questions.Q2 />
           </Route>
-          <Route path="/question-3">
+          <Route path="/interview/question-3">
             <Questions.Q3 />
           </Route>
         </Switch>
