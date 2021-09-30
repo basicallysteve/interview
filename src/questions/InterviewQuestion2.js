@@ -64,7 +64,7 @@ export default function Question2(){
     
     return (
         <>
-        <Alert show={status !== null} variant={status < 300 ? 'success' : 'danger'} dismissible>
+        <Alert show={status !== null} variant={status < 300 ? 'success' : 'danger'} onClose={() => setStatus(null)}dismissible>
             {status < 300 && status? 'Post created!' : 'Hmm, that message didn\'t post.'}
         </Alert>
         <Container size="sm">
@@ -73,7 +73,7 @@ export default function Question2(){
         </Row>
         <Row>
             <Col>
-                <p>One of the requirements of our application is that users should be able to create posts. A post is made up of a title and a body. Please use the <a href="https://jsonplaceholder.typicode.com/posts" target="_blank">provided API</a> to post a message. </p>
+                <p>One of the requirements of our application is that users should be able to create posts. A post is made up of a title and a body. Please use the <a href="https://jsonplaceholder.typicode.com/posts" target="_blank" rel="noreferrer">provided API</a> to post a message. </p>
                 <ol className="w-50" style={{margin: "auto"}}>
                     <li>If given an error status, what message would you show the user and how?</li>
                     <li>How can we prevent invalid requests from being fired?</li>

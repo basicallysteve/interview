@@ -6,7 +6,7 @@ export default function Question1(){
     let [users, setUsers] = useState([]);
     let [name, setName] = useState("")
     useEffect(()=>{
-        if(users.length == 0){
+        if(users.length === 0){
             axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
                 let users = response.data;
                 setUsers(users);
@@ -29,7 +29,7 @@ export default function Question1(){
      * @description Should return a list of users
      */
     function filter(name, users){
-        return name != "" ? users.filter(user => user.name.split(" ")[0].toLowerCase().startsWith(name.toLowerCase()) || user.name.split(" ")[1].toLowerCase().startsWith(name.toLowerCase())) : users;
+        return name !== "" ? users.filter(user => user.name.split(" ")[0].toLowerCase().startsWith(name.toLowerCase()) || user.name.split(" ")[1].toLowerCase().startsWith(name.toLowerCase())) : users;
     }
     /**
      * @function filteredUsers
