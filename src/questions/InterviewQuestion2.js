@@ -1,7 +1,7 @@
 import axios from "axios"
 import _ from "lodash";
 import {useState} from "react"
-import {Container,Row, Col, Form, Button} from "react-bootstrap"
+import {Container,Row, Col, Form, Button, Alert} from "react-bootstrap"
 
 export default function Question2(){
     let [post, setPost] = useState({
@@ -9,7 +9,7 @@ export default function Question2(){
         body: ""
     })
 
-    let [status, setStatus] = useState()
+    let [status, setStatus] = useState(null)
     /**
      * @function validate
      * @param {string} title
@@ -50,11 +50,23 @@ export default function Question2(){
         if(isValid(post.title, post.body)){
             axios.post(`https://jsonplaceholder.typicode.com/posts`, {post, userId: 1}).then(response=>{
                 setStatus(response.status);    
+            }).finally(()=>{
+                setPost({
+                    title: '',
+                    body: ''
+                })
+
+                setTimeout(()=> setStatus(null), 2500)
+
             })
         }
     }
     
     return (
+        <>
+        <Alert show={status !== null} variant={status < 300 ? 'success' : 'danger'} dismissible>
+            {status < 300 && status? 'Post created!' : 'Hmm, that message didn\'t post.'}
+        </Alert>
         <Container size="sm">
         <Row>
             <Col><h1>Question 2</h1></Col>
@@ -86,5 +98,6 @@ export default function Question2(){
             </Col>
         </Row>
         </Container>
+        </>
     );
 };
